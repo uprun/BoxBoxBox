@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://floor.tscn" type="PackedScene" id=1]
 [ext_resource path="res://walls.tscn" type="PackedScene" id=2]
@@ -8,7 +8,6 @@
 [ext_resource path="res://goalArea.tscn" type="PackedScene" id=7]
 [ext_resource path="res://game.gd" type="Script" id=9]
 [ext_resource path="res://goalArea.gd" type="Script" id=10]
-[ext_resource path="res://fire-cube.tscn" type="PackedScene" id=11]
 [ext_resource path="res://enemy-bot.tscn" type="PackedScene" id=12]
 
 [sub_resource type="BoxShape" id=1]
@@ -93,9 +92,6 @@ __meta__ = {
 [node name="DirectionalLight" type="DirectionalLight" parent="."]
 transform = Transform( 0.5, 0.612373, 0.612373, 0, -0.707107, 0.707107, 0.866025, -0.353553, -0.353553, 0, 15.5, -2.5 )
 shadow_enabled = true
-
-[node name="bullet-fire-cube" parent="." instance=ExtResource( 11 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4.61217, 3.65835, -8.813 )
 
 [node name="enemy-bot" parent="." instance=ExtResource( 12 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.39169, 0.807248, -0.133082 )
