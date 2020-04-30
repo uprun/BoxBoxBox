@@ -4,7 +4,7 @@ export(NodePath) var pathToCollisionShape
 # Declare member variables here. Examples:
 # var a: int = 2
 # var b: String = "text"
-var speed = 230
+var speed = 130
 var rotation_speed = 90
 var moveDirection = Vector3(0, 0, 1)
 var initial_rotation: Vector3
@@ -15,9 +15,10 @@ func _ready() -> void:
 	initial_rotation = self.rotation_degrees
 	initial_transform = self.transform
 
-func _process(delta: float) -> void:
-	var rot_move = moveDirection.rotated(Vector3.RIGHT, deg2rad(self.initial_rotation.x)).rotated(Vector3.UP, deg2rad(self.initial_rotation.y)).rotated(Vector3.FORWARD, deg2rad(self.initial_rotation.z))
+func _physics_process(delta: float) -> void:
+	#var rot_move = moveDirection.rotated(Vector3.RIGHT, deg2rad(self.initial_rotation.x)).rotated(Vector3.UP, deg2rad(self.initial_rotation.y)).rotated(Vector3.FORWARD, deg2rad(self.initial_rotation.z))
 	
+	var rot_move = initial_transform.basis.z.normalized();
 	
 	move_and_collide(rot_move * speed * delta)
 	
