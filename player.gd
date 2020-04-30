@@ -26,10 +26,11 @@ func _input(event: InputEvent) -> void:
 		rotate_y(-PI * test.x / 1000 )
 
 	if event is InputEventKey and event.pressed:
-		print(event.scancode,'-', event.unicode)
+		#print(event.scancode,'-', event.unicode)
+		pass
 
 
-func _physics_process(delta: float) -> void:
+func _process(delta: float) -> void:
 	
 	direction = Vector3()
 	if Input.is_key_pressed(KEY_A):

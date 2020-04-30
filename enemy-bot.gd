@@ -9,18 +9,16 @@ export var speed = 600
 var direction = Vector3()
 var gravity = -9.8
 var velocity = Vector3()
-var hp = 100
 
 func decrease_hp() -> void:
-	hp -= 25
-	if hp < 0:
-		queue_free()
+	print('hit')
+	queue_free()
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
 
-func _physics_process(delta: float) -> void:
+func _process(delta: float) -> void:
 	direction = Vector3()
 	if Input.is_key_pressed(KEY_A):
 		direction.x += 1

@@ -14,7 +14,12 @@ func _input(event: InputEvent) -> void:
 	
 	if event is InputEventMouseMotion:
 		var test = (event as InputEventMouseMotion).relative
-		rotate_x(PI * test.y/1000 )
+		var change = PI * test.y/1000
+		#cast
+		if rotation_degrees.x < 45 && change > 0 :
+			rotate_x( change )
+		if rotation_degrees.x > -65 && change < 0:
+			rotate_x(change)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta: float) -> void:
