@@ -1,0 +1,61 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://player.gd" type="Script" id=1]
+[ext_resource path="res://head.gd" type="Script" id=2]
+[ext_resource path="res://aim-box.gd" type="Script" id=3]
+
+[sub_resource type="SpatialMaterial" id=1]
+albedo_color = Color( 0.211765, 0.141176, 0.843137, 1 )
+
+[sub_resource type="CubeMesh" id=2]
+material = SubResource( 1 )
+
+[sub_resource type="BoxShape" id=3]
+extents = Vector3( 1, 1, 1.47276 )
+
+[sub_resource type="CubeMesh" id=4]
+
+[sub_resource type="SpatialMaterial" id=5]
+albedo_color = Color( 0.231373, 0.133333, 0.909804, 1 )
+
+[sub_resource type="CubeMesh" id=6]
+material = SubResource( 5 )
+
+[node name="player" type="KinematicBody"]
+collision_layer = 2
+script = ExtResource( 1 )
+
+[node name="MeshInstance" type="MeshInstance" parent="."]
+transform = Transform( 0.719554, 0, 0, 0, -6.00465e-08, 1.3737, 0, -0.711196, -3.10874e-08, 0, 1.41932, 0 )
+mesh = SubResource( 2 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+transform = Transform( 0.719554, 0, 0, 0, -6.00465e-08, 1.3737, 0, -0.711196, -3.10874e-08, 0, 2.08623, 0 )
+shape = SubResource( 3 )
+
+[node name="head" type="MeshInstance" parent="."]
+transform = Transform( 0.536274, 0, 0, 0, 0.536274, 0, 0, 0, 0.536274, 0.0144986, 3.49564, -0.00995421 )
+mesh = SubResource( 4 )
+material/0 = null
+script = ExtResource( 2 )
+
+[node name="MeshInstance2" type="MeshInstance" parent="head"]
+transform = Transform( 0.358026, 0, 0, 0, 0.391591, 0, 0, 0, 0.417697, -0.586451, 0.430374, 0.659553 )
+mesh = SubResource( 6 )
+material/0 = null
+
+[node name="aim-box" type="MeshInstance" parent="head"]
+transform = Transform( 0.358026, 0, 0, 0, 0.391591, 0, 0, 0, 0.417697, -1.16685, -0.464344, 4.73162 )
+mesh = SubResource( 6 )
+material/0 = null
+script = ExtResource( 3 )
+
+[node name="MeshInstance3" type="MeshInstance" parent="head"]
+transform = Transform( 0.358026, 0, 0, 0, 0.391591, 0, 0, 0, 0.417697, 0.625616, 0.430374, 0.660768 )
+mesh = SubResource( 6 )
+material/0 = null
+
+[node name="Camera" type="Camera" parent="head"]
+transform = Transform( -1.86472, 0, 6.07603e-07, 0, 1.86472, 0, -6.07603e-07, 0, -1.86472, -0.0270358, 0.59892, 1.05076 )
+far = 337.5
