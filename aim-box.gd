@@ -15,7 +15,7 @@ func _input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
 		if (event as InputEventMouseButton).button_index == BUTTON_LEFT and event.pressed:
 			var bullet = BULLET.instance()
-			bullet.transform = global_transform
+			bullet.transform = global_transform.translated(global_transform.basis.z.normalized() * 2)
 			get_node("/root/game").add_child(bullet)
 
 

@@ -4,27 +4,30 @@ export(NodePath) var pathToCollisionShape
 # Declare member variables here. Examples:
 # var a: int = 2
 # var b: String = "text"
-var speed = 130
+var speed = 60
 var rotation_speed = 90
 var moveDirection = Vector3(0, 0, 1)
 var initial_rotation: Vector3
 var initial_transform: Transform
+var velocity = Vector3.ZERO
+var maxTime = 5
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	initial_rotation = self.rotation_degrees
 	initial_transform = self.transform
+	velocity = initial_transform.basis.z.normalized() * speed
 
 func _physics_process(delta: float) -> void:
-	#var rot_move = moveDirection.rotated(Vector3.RIGHT, deg2rad(self.initial_rotation.x)).rotated(Vector3.UP, deg2rad(self.initial_rotation.y)).rotated(Vector3.FORWARD, deg2rad(self.initial_rotation.z))
+	#velocity.y -= 19.8 * delta
 	
-	var rot_move = initial_transform.basis.z.normalized();
 	
-	move_and_collide(rot_move * speed * delta)
+	move_and_collide(velocity* delta)
 	
-	var diff = (transform.origin - initial_transform.origin).length()
-	if diff > 400:
-		#print('distance destroyed')
+	maxTime -= delta
+	
+	if maxTime < 0:
 		queue_free()
 	#move_and_collide(initial_transform.origin * delta)
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -36,11 +39,10 @@ func _physics_process(delta: float) -> void:
 
 
 func _on_Area_body_entered(body: Node) -> void:
-	if body.name == "enemy-bot":
+	if body.name.find("enemy") >= 0 or body.name.find("player") >= 0:
 		body.decrease_hp()
 		queue_free()
-	elif body.name == "player":
-		pass
 	else:
 		queue_free()
+		
 	

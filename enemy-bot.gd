@@ -5,7 +5,7 @@ extends KinematicBody
 # var a: int = 2
 # var b: String = "text"
 
-export var speed = 600
+export var speed = 20
 var direction = Vector3()
 var gravity = -9.8
 var velocity = Vector3()
@@ -18,7 +18,7 @@ func decrease_hp() -> void:
 func _ready() -> void:
 	pass # Replace with function body.
 
-func _process(delta: float) -> void:
+func _physics_process(delta: float) -> void:
 	direction = Vector3()
 	if Input.is_key_pressed(KEY_A):
 		direction.x += 1
@@ -28,8 +28,7 @@ func _process(delta: float) -> void:
 		direction.z += 1
 	if Input.is_key_pressed(KEY_S):
 		direction.z -= 1
-	direction = direction.normalized()
-	direction = direction * speed * delta
+	direction = direction.normalized() * speed 
 	
 	velocity.y += gravity * delta
 	velocity.x = direction.x

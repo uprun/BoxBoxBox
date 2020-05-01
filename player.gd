@@ -4,13 +4,15 @@ extends KinematicBody
 # Declare member variables here. Examples:
 # var a: int = 2
 # var b: String = "text"
-export var speed = 600
+export var speed = 20
 var direction = Vector3()
 var gravity = -9.8 
 var velocity = Vector3()
 
 
-
+func decrease_hp() -> void:
+	print('hit')
+	queue_free()
 
 
 # Called when the node enters the scene tree for the first time.
@@ -30,7 +32,7 @@ func _input(event: InputEvent) -> void:
 		pass
 
 
-func _process(delta: float) -> void:
+func _physics_process(delta: float) -> void:
 	
 	direction = Vector3()
 	if Input.is_key_pressed(KEY_A):
@@ -41,8 +43,7 @@ func _process(delta: float) -> void:
 		direction.z += 1
 	if Input.is_key_pressed(KEY_S):
 		direction.z -= 1
-	direction = direction.normalized()
-	direction = direction * speed * delta
+	direction = direction.normalized() * speed
 	
 	velocity.y += gravity * delta
 	velocity.x = direction.x

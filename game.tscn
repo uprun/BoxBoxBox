@@ -1,15 +1,11 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://floor.tscn" type="PackedScene" id=1]
 [ext_resource path="res://walls.tscn" type="PackedScene" id=2]
-[ext_resource path="res://ramp.tscn" type="PackedScene" id=3]
 [ext_resource path="res://player.tscn" type="PackedScene" id=4]
 [ext_resource path="res://ColorRect.gd" type="Script" id=5]
-[ext_resource path="res://goalPortal.tscn" type="PackedScene" id=6]
-[ext_resource path="res://goalArea.tscn" type="PackedScene" id=7]
 [ext_resource path="res://PlayRect.gd" type="Script" id=8]
 [ext_resource path="res://game.gd" type="Script" id=9]
-[ext_resource path="res://goalArea.gd" type="Script" id=10]
 [ext_resource path="res://RestartRect.gd" type="Script" id=11]
 [ext_resource path="res://enemy-bot.tscn" type="PackedScene" id=12]
 
@@ -18,47 +14,8 @@
 [node name="game" type="Spatial"]
 script = ExtResource( 9 )
 
-[node name="goalArea" parent="." instance=ExtResource( 7 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -6.55028, 2, 6 )
-script = ExtResource( 10 )
-
-[node name="Floor" parent="." instance=ExtResource( 1 )]
-
 [node name="Floor2" parent="." instance=ExtResource( 1 )]
-transform = Transform( 5.525, 0, 0, 0, 1, 0, 0, 0, 6.21, 0, -4, -5 )
-
-[node name="EndPlatform" parent="." instance=ExtResource( 1 )]
-transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -1, 3.5, 36.5 )
-
-[node name="walls5" parent="EndPlatform" instance=ExtResource( 2 )]
-transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 1.25976, 9.5 )
-
-[node name="walls6" parent="EndPlatform" instance=ExtResource( 2 )]
-transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 1.25976, -10 )
-
-[node name="walls7" parent="EndPlatform" instance=ExtResource( 2 )]
-transform = Transform( 1, 0, -1.06581e-14, 0, 1, 0, 1.06581e-14, 0, 1, 9, 1.25976, 0 )
-
-[node name="goalPortal" parent="EndPlatform" instance=ExtResource( 6 )]
-transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -7.5, 7, -4.5 )
-
-[node name="walls" parent="." instance=ExtResource( 2 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 1.25976, 0 )
-
-[node name="walls2" parent="." instance=ExtResource( 2 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 1.25976, 0 )
-
-[node name="walls3" parent="." instance=ExtResource( 2 )]
-transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 1.25976, 9.5 )
-
-[node name="walls4" parent="." instance=ExtResource( 2 )]
-transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 1.25976, -9.5 )
-
-[node name="ramp" parent="." instance=ExtResource( 3 )]
-transform = Transform( 1, 0, 0, 0, 0.965925, 0.258819, 0, -0.258819, 0.965925, 0, 1.5, 19 )
-
-[node name="ramp2" parent="." instance=ExtResource( 3 )]
-transform = Transform( 0.000330359, 0.341707, -0.939806, 0.00759612, 0.939778, 0.3417, 0.999971, -0.00725177, -0.00228518, 19.05, -2, 2 )
+transform = Transform( 5.525, 0, 0, 0, 1, 0, 0, 0, 6.21, 0, -1, -5 )
 
 [node name="ExitRect" type="ColorRect" parent="."]
 margin_left = 71.6037
@@ -145,9 +102,6 @@ __meta__ = {
 transform = Transform( 0.5, 0.612373, 0.612373, 0, -0.707107, 0.707107, 0.866025, -0.353553, -0.353553, 0, 15.5, -2.5 )
 shadow_enabled = true
 
-[node name="enemy-bot" parent="." instance=ExtResource( 12 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.39169, 0.807248, -0.133082 )
-
 [node name="boundaries" type="Spatial" parent="."]
 transform = Transform( 1, 0, 0, 0, 0.63, 0, 0, 0, 1, 0, -4, 0 )
 
@@ -225,4 +179,9 @@ transform = Transform( -4.37114e-08, 0, -1, 0, 17.657, 0, 1, 0, -4.37114e-08, 49
 
 [node name="player" parent="." instance=ExtResource( 4 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1 )
-[connection signal="body_entered" from="goalArea" to="goalArea" method="_on_goalArea_body_entered"]
+
+[node name="enemy-bot" parent="." instance=ExtResource( 12 )]
+transform = Transform( -1, 0, 0, 0, 1, 0, 0, 0, -1, 0, 0, 31 )
+
+[node name="Camera" type="Camera" parent="."]
+transform = Transform( -3.09086e-08, -0.707107, 0.707107, -3.09086e-08, 0.707107, 0.707107, -1, 0, -4.37114e-08, 51, 31, 8 )
