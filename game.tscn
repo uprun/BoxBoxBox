@@ -1,7 +1,8 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://floor.tscn" type="PackedScene" id=1]
 [ext_resource path="res://walls.tscn" type="PackedScene" id=2]
+[ext_resource path="res://bump.tscn" type="PackedScene" id=3]
 [ext_resource path="res://player.tscn" type="PackedScene" id=4]
 [ext_resource path="res://ColorRect.gd" type="Script" id=5]
 [ext_resource path="res://PlayRect.gd" type="Script" id=8]
@@ -185,3 +186,6 @@ transform = Transform( -1, 0, 0, 0, 1, 0, 0, 0, -1, 0, 0, 31 )
 
 [node name="Camera" type="Camera" parent="."]
 transform = Transform( -3.09086e-08, -0.707107, 0.707107, -3.09086e-08, 0.707107, 0.707107, -1, 0, -4.37114e-08, 51, 31, 8 )
+
+[node name="bump" parent="." instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -17, -0.8, 26 )
